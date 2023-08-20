@@ -1,0 +1,6 @@
+[submodule "submodules/impacket"]
+	path = submodules/impacket
+	url = https://github.com/fortra/impacket.git
+[submodule "submodules/vpnc-scripts"]
+	path = submodules/vpnc-scripts
+	url = https://gitlab.com/openconnect/vpnc-scripts

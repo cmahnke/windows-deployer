@@ -1,0 +1,132 @@
+name: Windows Deployer GitHub Packages
+
+permissions:
+  packages: write
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_vpnconnect:
+    name: Push to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3.5.2
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Log in to the Container registry
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          logout: false
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2.5.0
+        with:
+          driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@c4ee3adeed93b1fa6a762f209fb01608c1a22f1e
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}/vpnconnect
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: .
+          file: ./docker/vpnconnect/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  build_fileprovider:
+    name: Push to GitHub Packages
+    needs: build_vpnconnect
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3.5.2
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Log in to the Container registry
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          logout: false
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2.5.0
+        with:
+          driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@c4ee3adeed93b1fa6a762f209fb01608c1a22f1e
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}/fileprovider
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: .
+          file: ./docker/fileprovider/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  build_windowsdeployer:
+    name: Push to GitHub Packages
+    needs: build_fileprovider
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3.5.2
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Log in to the Container registry
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          logout: false
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2.5.0
+        with:
+          driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@c4ee3adeed93b1fa6a762f209fb01608c1a22f1e
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}/windowsdeployer
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: .
+          file: ./docker/windowsdeployer/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
