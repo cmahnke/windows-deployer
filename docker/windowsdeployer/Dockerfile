@@ -25,6 +25,13 @@ RUN --mount=target=/mnt/build-context \
     cd $BUILD_DIR && \
     cp -r /mnt/build-context/submodules/impacket $BUILD_DIR/ && \
     python3 -m pip install impacket/ && \
+    cd $BUILD_DIR && \
+    cp -r /mnt/build-context/submodules/msi-utils $BUILD_DIR/ && \
+    cd msi-utils/msiutils/data/ && \
+    rm * && \
+    ln -s /usr/bin/msi* . && \
+    cd ../.. && \
+    python3 setup.py install && \
     cd / && \
     apk del $REQ_BUILD && \
     rm -rf $BUILD_DIR /var/lib/apt/lists/*

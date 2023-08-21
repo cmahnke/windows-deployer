@@ -7,3 +7,6 @@
 [submodule "submodules/msitools"]
 	path = submodules/msitools
 	url = https://gitlab.gnome.org/GNOME/msitools.git
+[submodule "submodules/msi-utils"]
+	path = submodules/msi-utils
+	url = https://github.com/MSAdministrator/msi-utils.git

@@ -22,8 +22,6 @@ The tool has been tested agains Windows 11 ARM, but should also work with Window
 * `vpnconnect`: Certificate based VPN login
 * `windowsdeployer`:
     * Set the Windows shell to installed programm
-    * Integrate tools for MSI introspction
-* Example program and MSI packaging
 
 ## Features
 
@@ -54,6 +52,12 @@ docker buildx build -f docker/fileprovider/Dockerfile -t ghcr.io/cmahnke/windows
 
 ```
 docker buildx build -f docker/windowsdeployer/Dockerfile -t ghcr.io/cmahnke/windows-deployer/windowsdeployer:latest .
+```
+
+### Deploy Example
+
+```
+docker buildx build -f docker/deployexample/Dockerfile -t ghcr.io/cmahnke/windows-deployer/deployexample:latest . 
 ```
 
 # Usage
