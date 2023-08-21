@@ -22,8 +22,6 @@ The tool has been tested agains Windows 11 ARM, but should also work with Window
 * `vpnconnect`: Certificate based VPN login
 * `windowsdeployer`:
     * Set the Windows shell to installed programm
-    * Integrate tools for MSI introspction
-* Example program and MSI packaging
 
 ## Features
 
@@ -31,6 +29,12 @@ The tool has been tested agains Windows 11 ARM, but should also work with Window
 
 The images depend on each other, make sure to build them in the order shown here.
 But they are also build by GitHub, so there should be no need to build them, if you're not planning to change / improve them.
+
+## MSI Tools
+
+```
+docker buildx build -f docker/msitools/Dockerfile -t ghcr.io/cmahnke/windows-deployer/msitools:latest .
+```
 
 ## VPN Connector
 
@@ -48,6 +52,12 @@ docker buildx build -f docker/fileprovider/Dockerfile -t ghcr.io/cmahnke/windows
 
 ```
 docker buildx build -f docker/windowsdeployer/Dockerfile -t ghcr.io/cmahnke/windows-deployer/windowsdeployer:latest .
+```
+
+### Deploy Example
+
+```
+docker buildx build -f docker/deployexample/Dockerfile -t ghcr.io/cmahnke/windows-deployer/deployexample:latest . 
 ```
 
 # Usage
@@ -141,5 +151,6 @@ This tool either uses or was inspired by the following projects:
 * VPN Slice Script: [`vpn-sclice`](https://github.com/dlenski/vpn-slice)
 * Python Network interface library: [`ifaddr`](https://github.com/pydron/ifaddr)
 * Samba SMB Fileserver: [Samba](https://www.samba.org/)
-+ Python SMB client: [`smbprotocol`](https://github.com/jborean93/smbprotocol)
+* Python SMB client: [`smbprotocol`](https://github.com/jborean93/smbprotocol)
 * Python based WMI executer: [`impacket`](https://github.com/fortra/impacket)
+* Gnome MSI tools: [`msitools`](https://gitlab.gnome.org/GNOME/msitools)

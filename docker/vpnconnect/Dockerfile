@@ -11,6 +11,7 @@ ENV REQ_RUN="openconnect bash procps" \
     PATH=":$PATH"
 
 RUN --mount=target=/mnt/build-context \
+    apk update && \
     apk add --no-cache --update $REQ_BUILD $REQ_RUN && \
     pip install --upgrade pip && \
     pip install -r /mnt/build-context/docker/vpnconnect/requirements.txt && \
