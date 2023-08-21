@@ -141,6 +141,12 @@ For local development you need to install the following Python modules:
 * `impacket`
 * `smbprotocol`
 * `ifaddr`
+* `msiutils`
+    * This also needs `msitools` installed
+
+# Troubleshooting
+
+* If connecting using WMI doesn't work see https://help.pdq.com/hc/en-us/articles/220533007
 
 # Credits
 
@@ -154,3 +160,4 @@ This tool either uses or was inspired by the following projects:
 * Python SMB client: [`smbprotocol`](https://github.com/jborean93/smbprotocol)
 * Python based WMI executer: [`impacket`](https://github.com/fortra/impacket)
 * Gnome MSI tools: [`msitools`](https://gitlab.gnome.org/GNOME/msitools)
+* Python MSI tools wrapper: [`msi-utils`](https://github.com/MSAdministrator/msi-utils)

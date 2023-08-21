@@ -6,14 +6,42 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/docker/deployexample/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/docker/fileprovider/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/docker/msitools/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/docker/vpnconnect/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/docker/windowsdeployer/"
     schedule:
       interval: "daily"
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "/docker/fileprovider/"
+    schedule:
+      interval: "daily" 
+  - package-ecosystem: "pip"
+    directory: "/docker/vpnconnect/"
+    schedule:
+      interval: "daily" 
+  - package-ecosystem: "pip"
+    directory: "/docker/windowsdeployer/"
     schedule:
       interval: "daily" 
   - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
-      interval: "weekly" 
+      interval: "weekly"
+  - package-ecosystem: "gomod"
+    directory: "/docker/deployexample/"
+    schedule:
+      interval: "daily"
