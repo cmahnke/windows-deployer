@@ -4,3 +4,6 @@
 [submodule "submodules/vpnc-scripts"]
 	path = submodules/vpnc-scripts
 	url = https://gitlab.com/openconnect/vpnc-scripts
+[submodule "submodules/msitools"]
+	path = submodules/msitools
+	url = https://gitlab.gnome.org/GNOME/msitools.git

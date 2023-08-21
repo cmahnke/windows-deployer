@@ -1,0 +1,50 @@
+diff --git a/tools/wixl/builder.vala b/tools/wixl/builder.vala
+index 0d34f38..9fe9aa3 100644
+--- a/tools/wixl/builder.vala
++++ b/tools/wixl/builder.vala
+@@ -5,7 +5,11 @@ namespace Wixl {
+         INTEL = 0,
+         IA64 = 1,
+         INTEL64 = 1,
+-        X64;
++        AMD64 = 2,
++        X86_64 = 2,
++        X64 = 2,
++        ARM,
++        ARM64;
+ 
+         public static Arch from_string(string s) throws GLib.Error {
+             return enum_from_string<Arch> (s);
+@@ -16,6 +20,8 @@ namespace Wixl {
+                 case X86: return "x86";
+                 case IA64: return "ia64";
+                 case X64: return "x64";
++                case ARM: return "arm";
++                case ARM64: return "arm64";
+                 default: return "";
+             }
+         }
+@@ -537,7 +543,7 @@ namespace Wixl {
+ 
+             if (comp.Win64 != null && parse_yesno (comp.Win64))
+                 attr |= ComponentAttribute.64BIT;
+-            else if (comp.Win64 == null && (arch == Arch.X64 || arch == Arch.IA64))
++            else if (comp.Win64 == null && (arch == Arch.X64 || arch == Arch.IA64  || arch == Arch.ARM64))
+                 attr |= ComponentAttribute.64BIT;
+ 
+             db.table_component.add (comp.Id, uuid, dir.Id, attr,
+diff --git a/tools/wixl/msi.vala b/tools/wixl/msi.vala
+index 4ff0560..2d9c6b7 100644
+--- a/tools/wixl/msi.vala
++++ b/tools/wixl/msi.vala
+@@ -1148,6 +1148,10 @@ namespace Wixl {
+         string get_arch_template () {
+             if (arch == Arch.X86)
+                 return "Intel";
++            else if (arch == Arch.ARM)
++                return "Arm";
++            else if (arch == Arch.ARM64)
++                return "Arm64";
+             else
+                 return "x64";
+         }
