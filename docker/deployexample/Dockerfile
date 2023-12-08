@@ -16,7 +16,7 @@ RUN --mount=target=/mnt/build-context \
         CGO_ENABLED=0 GOARCH=$ARCH CGO_ENABLED=0 go build -o deployexample-$ARCH.exe; \
     done
     
-FROM alpine:3.18
+FROM alpine:3.19
 
 LABEL maintainer="cmahnke@gmail.com"
 LABEL org.opencontainers.image.source=https://github.com/cmahnke/windows-deployer
