@@ -33,7 +33,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@31cebacef4805868f9ce9a0cb03ee36c32df2ac4
+        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e
         with:
           images: |
             ghcr.io/${{ github.repository }}/msitools
@@ -74,7 +74,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@31cebacef4805868f9ce9a0cb03ee36c32df2ac4
+        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e
         with:
           images: |
             ghcr.io/${{ github.repository }}/vpnconnect
@@ -116,7 +116,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@31cebacef4805868f9ce9a0cb03ee36c32df2ac4
+        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e
         with:
           images: |
             ghcr.io/${{ github.repository }}/fileprovider
@@ -160,7 +160,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@31cebacef4805868f9ce9a0cb03ee36c32df2ac4
+        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e
         with:
           images: |
             ghcr.io/${{ github.repository }}/windowsdeployer
@@ -203,7 +203,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@31cebacef4805868f9ce9a0cb03ee36c32df2ac4
+        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e
         with:
           images: |
             ghcr.io/${{ github.repository }}/deployexample
