@@ -30,6 +30,12 @@ The tool has been tested agains Windows 11 ARM, but should also work with Window
 The images depend on each other, make sure to build them in the order shown here.
 But they are also build by GitHub, so there should be no need to build them, if you're not planning to change / improve them.
 
+You can also use the provides script:
+
+```
+./build-images.sh
+```
+
 ## MSI Tools
 
 ```
@@ -42,19 +48,19 @@ docker buildx build -f docker/msitools/Dockerfile -t ghcr.io/cmahnke/windows-dep
 docker buildx build -f docker/vpnconnect/Dockerfile -t ghcr.io/cmahnke/windows-deployer/vpnconnect:latest .
 ```
 
-### File Provider
+## File Provider
 
 ```
 docker buildx build -f docker/fileprovider/Dockerfile -t ghcr.io/cmahnke/windows-deployer/fileprovider:latest .
 ```
 
-### Windows Deployer
+## Windows Deployer
 
 ```
 docker buildx build -f docker/windowsdeployer/Dockerfile -t ghcr.io/cmahnke/windows-deployer/windowsdeployer:latest .
 ```
 
-### Deploy Example
+## Deploy Example
 
 ```
 docker buildx build -f docker/deployexample/Dockerfile -t ghcr.io/cmahnke/windows-deployer/deployexample:latest . 
@@ -141,8 +147,8 @@ For local development you need to install the following Python modules:
 * `impacket`
 * `smbprotocol`
 * `ifaddr`
-* `msiutils`
-    * This also needs `msitools` installed
+* `msiutils` (patched)
+    * This also needs (patched) `msitools` installed
 
 # Troubleshooting
 

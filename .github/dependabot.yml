@@ -5,43 +5,87 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      github-actions:
+        patterns:
+        - '*' 
   - package-ecosystem: "docker"
     directory: "/docker/deployexample/"
     schedule:
       interval: "daily"
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "docker"
     directory: "/docker/fileprovider/"
     schedule:
       interval: "daily"
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "docker"
     directory: "/docker/msitools/"
     schedule:
       interval: "daily"
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "docker"
     directory: "/docker/vpnconnect/"
     schedule:
       interval: "daily"
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "docker"
     directory: "/docker/windowsdeployer/"
     schedule:
       interval: "daily"
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "pip"
     directory: "/docker/fileprovider/"
     schedule:
       interval: "daily" 
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "pip"
     directory: "/docker/vpnconnect/"
     schedule:
       interval: "daily" 
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "pip"
     directory: "/docker/windowsdeployer/"
     schedule:
       interval: "daily" 
+    groups:
+      docker:
+        patterns:
+        - '*' 
   - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    groups:
+      gitsubmodule:
+        patterns:
+        - '*' 
   - package-ecosystem: "gomod"
     directory: "/docker/deployexample/"
     schedule:
       interval: "daily"
+    groups:
+      gomod:
+        patterns:
+        - '*' 
