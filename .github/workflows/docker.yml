@@ -21,7 +21,7 @@ jobs:
           submodules: true
           fetch-depth: 0
       - name: Log in to the Container registry
-        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -30,7 +30,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.4.0
+        uses: docker/setup-buildx-action@v3.5.0
         with:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
@@ -43,7 +43,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=branch
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v6.4.1
+        uses: docker/build-push-action@v6.5.0
         with:
           context: .
           file: ./docker/msitools/Dockerfile
@@ -62,7 +62,7 @@ jobs:
           submodules: true
           fetch-depth: 0
       - name: Log in to the Container registry
-        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -71,7 +71,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.4.0
+        uses: docker/setup-buildx-action@v3.5.0
         with:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
@@ -84,7 +84,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=branch
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v6.4.1
+        uses: docker/build-push-action@v6.5.0
         with:
           context: .
           file: ./docker/vpnconnect/Dockerfile
@@ -104,7 +104,7 @@ jobs:
           submodules: true
           fetch-depth: 0
       - name: Log in to the Container registry
-        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -113,7 +113,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.4.0
+        uses: docker/setup-buildx-action@v3.5.0
         with:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
@@ -126,7 +126,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=branch
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v6.4.1
+        uses: docker/build-push-action@v6.5.0
         with:
           context: .
           file: ./docker/fileprovider/Dockerfile
@@ -149,7 +149,7 @@ jobs:
           submodules: true
           fetch-depth: 0
       - name: Log in to the Container registry
-        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -158,7 +158,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.4.0
+        uses: docker/setup-buildx-action@v3.5.0
         with:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
@@ -171,7 +171,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=branch
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v6.4.1
+        uses: docker/build-push-action@v6.5.0
         with:
           context: .
           file: ./docker/windowsdeployer/Dockerfile
@@ -192,7 +192,7 @@ jobs:
           submodules: true
           fetch-depth: 0
       - name: Log in to the Container registry
-        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -201,7 +201,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.4.0
+        uses: docker/setup-buildx-action@v3.5.0
         with:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
@@ -214,7 +214,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=branch
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v6.4.1
+        uses: docker/build-push-action@v6.5.0
         with:
           context: .
           file: ./docker/deployexample/Dockerfile
@@ -237,7 +237,7 @@ jobs:
           submodules: true
           fetch-depth: 0
       - name: Log in to the Container registry
-        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -246,7 +246,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.4.0
+        uses: docker/setup-buildx-action@v3.5.0
         with:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
@@ -259,7 +259,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=branch
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v6.4.1
+        uses: docker/build-push-action@v6.5.0
         with:
           context: .
           file: ./docker/windowsdeployer/Dockerfile
