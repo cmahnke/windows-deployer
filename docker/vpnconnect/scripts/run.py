@@ -104,14 +104,15 @@ def group_args(argv, modules):
         return [subcmds[0] + subcmds[1], *subcmds[2:]]
 
 def load_config(cfg):
-    if cfg.lower().endswith('.toml'):
-        import toml
-        return toml.load(cfg)
-    elif cfg.lower().endswith('.yml') or cfg.lower().endswith('.yaml'):
-        import yaml
-        return yaml.load(cfg)
-    else:
-        raise NotImplementedError()
+    with open(cfg, 'r') as file:
+        if cfg.lower().endswith('.toml'):
+            import toml
+            return toml.load(cfg)
+        elif cfg.lower().endswith('.yml') or cfg.lower().endswith('.yaml'):
+            import yaml
+            return yaml.load(cfg)
+        else:
+            raise NotImplementedError()
 
 def load_modules(lib_dir, logger, dry_run):
     modules = {}

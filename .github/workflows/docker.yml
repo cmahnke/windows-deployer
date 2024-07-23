@@ -8,6 +8,7 @@ on:
     branches:
       - '*'
   pull_request:
+  pull_request:
 
 jobs:
   build_msitools:
@@ -216,6 +217,96 @@ jobs:
         with:
           context: .
           file: ./docker/deployexample/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  build_windowsdeployer:
+    name: Push to GitHub Packages
+    needs: 
+      - build_fileprovider
+      - build_msitools
+      - build_deployexample
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4.1.7
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Log in to the Container registry
+        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          logout: false
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.4.0
+        with:
+          driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}/windowsdeployer
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=ref,event=branch
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v6.4.1
+        with:
+          context: .
+          file: ./docker/windowsdeployer/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  build_windowsdeployer:
+    name: Push to GitHub Packages
+    needs: 
+      - build_fileprovider
+      - build_msitools
+      - build_deployexample
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3.5.3
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Log in to the Container registry
+        uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          logout: false
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2.9.1
+        with:
+          driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@818d4b7b91585d195f67373fd9cb0332e31a7175
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}/windowsdeployer
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=ref,event=branch
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v4.1.1
+        with:
+          context: .
+          file: ./docker/windowsdeployer/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
