@@ -2,7 +2,7 @@
 
 FROM ghcr.io/cmahnke/windows-deployer/msitools:latest as msitools
 
-FROM golang:1.21-alpine as builder
+FROM golang:1.22-alpine as builder
 
 ENV MOD_DIR=/go/src/christianmahnke.de/examples/windowsdeployer \
     GOOS=windows \
@@ -16,7 +16,7 @@ RUN --mount=target=/mnt/build-context \
         CGO_ENABLED=0 GOARCH=$ARCH CGO_ENABLED=0 go build -o deployexample-$ARCH.exe; \
     done
     
-FROM alpine:3.18
+FROM alpine:3.20
 
 LABEL maintainer="cmahnke@gmail.com"
 LABEL org.opencontainers.image.source=https://github.com/cmahnke/windows-deployer
