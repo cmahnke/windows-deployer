@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:experimental
 
-FROM alpine:3.21
+FROM alpine:3.22
 
 LABEL maintainer="cmahnke@gmail.com"
 LABEL org.opencontainers.image.source=https://github.com/cmahnke/windows-deployer
