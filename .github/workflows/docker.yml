@@ -35,7 +35,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
         with:
           images: |
             ghcr.io/${{ github.repository }}/msitools
@@ -76,7 +76,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
         with:
           images: |
             ghcr.io/${{ github.repository }}/vpnconnect
@@ -118,7 +118,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
         with:
           images: |
             ghcr.io/${{ github.repository }}/fileprovider
@@ -161,7 +161,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
         with:
           images: |
             ghcr.io/${{ github.repository }}/deployexample
@@ -206,7 +206,7 @@ jobs:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
         with:
           images: |
             ghcr.io/${{ github.repository }}/windowsdeployer
