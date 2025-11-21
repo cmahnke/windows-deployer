@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
         with:
           submodules: true
           fetch-depth: 0
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
         with:
           submodules: true
           fetch-depth: 0
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
         with:
           submodules: true
           fetch-depth: 0
@@ -142,7 +142,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
         with:
           submodules: true
           fetch-depth: 0
@@ -187,7 +187,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
         with:
           submodules: true
           fetch-depth: 0
