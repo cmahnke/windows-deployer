@@ -2,7 +2,7 @@
 
 FROM ghcr.io/cmahnke/windows-deployer/msitools:latest as msitools
 
-FROM golang:1.26-alpine as builder
+FROM golang:1.27-alpine as builder
 
 ENV MOD_DIR=/go/src/christianmahnke.de/examples/windowsdeployer \
     GOOS=windows \
